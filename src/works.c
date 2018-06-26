@@ -35,9 +35,7 @@ int p(int x){
 	for(i = 0;i < n; i++){
 	ans = ans + A[i];
 	}
-	if(ans%2==0)
-	return B[x] > ans/2;
-	else return B[x] > (ans/2)+1;
+	return B[x] > ans/2 && x>= m/2;
 }
 
 
@@ -57,6 +55,6 @@ int main(){
     		lb = x ;
     	}
     }
-  printf("%d\n" , ub) ;
+  printf("%d\n" , B[ub]) ;
   return 0;
 }
