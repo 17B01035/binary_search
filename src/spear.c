@@ -3,14 +3,12 @@
 int n;
 int k;
 int A[100000];
-int B[100000];
 
 int p(int x){
 	int i,ans;
 	ans =0;
 	for(i = 0; i < n; i++){
-	B[i] = A[i]/x;
-	ans = ans + B[i];
+	ans = ans + A[i]/x;
 	}
 	return ans >= k;
 }
@@ -22,7 +20,7 @@ int main(){
     scanf("%d", &A[i]);
   }
   lb = 0 ;
-    ub = A[n-1] ;
+    ub = 1000000001 ;
     while (ub - lb > 1) {
     	int x = (lb + ub) / 2 ;
     	if(p(x)){
