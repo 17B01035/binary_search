@@ -8,36 +8,19 @@ int ans;
 int m;
 
 int p(int x){
-	int i,j,sum,k;
-	ans=0;
-	k=0;
+	int i,sum,l;
+	sum = 0;
+	l = 1;
 	for(i = 0;i < n; i++){
-		sum = 0;
-		for(j = i;j < n;j++){
-			sum = sum + A[j];
-			B[k] = sum;
-			k = k + 1;
+		if(A[i] > x) return 0;
+		if(sum + A[i] <= x) sum += A[i];
+		else {
+			l++;
+			sum = A[i];
 		}
 	}
-	m = n*(n+1)/2;
-	 int min;
-	 for(i = 0; i < m; i++){
-	 	min = i;
-	 	for(j = i+1; j < m; j++){
-	 		if(B[j] < B[min]){ 
-	 		min = j;
-	 		}
-	 	}
-	 	int z = B[i]; 
-	 	B[i] = B[min]; 
-	 	B[min] = z;
-	 }
-	for(i = 0;i < n; i++){
-	ans = ans + A[i];
-	}
-	return B[x] > ans/2 && x>= m/2;
+	return l <= k;
 }
-
 
 int main(){
   int i, lb, ub;
@@ -45,7 +28,7 @@ int main(){
   for(i = 0; i < n; i++){
     scanf("%d", &A[i]);  }
   lb = 0 ;
-    ub = n*(n+1)/2 ;
+    ub = 1000000000 ;
     while (ub - lb > 1) {
     	int x = (lb + ub) / 2 ;
     	if(p(x)){
@@ -55,6 +38,6 @@ int main(){
     		lb = x ;
     	}
     }
-  printf("%d\n" , B[ub]) ;
+  printf("%d\n" , ub) ;
   return 0;
 }
